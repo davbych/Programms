@@ -23,7 +23,6 @@ echo Files to repair: %total_files%
 echo Estimated time: %total_minutes% min %remaining_seconds% sec
 echo.
 
-:: Обратный отсчёт
 for /L %%t in (3,-1,1) do (
     cls
     echo Files Repair System:
@@ -44,7 +43,6 @@ set /a "errors_count=0"
 set /a "warnings_count=0"
 
 for /L %%f in (1,1,%max_folders%) do (
-    :: Имя папки (рандом)
     set /a "r1=!random! %% 5"
     if !r1!==0 set "current_folder_name=Data_Core_v1"
     if !r1!==1 set "current_folder_name=Sys_Engine_dev"
@@ -53,7 +51,6 @@ for /L %%f in (1,1,%max_folders%) do (
     if !r1!==4 set "current_folder_name=Config_Driver_prod"
 
     for /L %%i in (1,1,%files_per_folder%) do (
-        :: Имя файла (рандом)
         set /a "r2=!random! %% 6"
         if !r2!==0 set "current_file_name=report_001.dat"
         if !r2!==1 set "current_file_name=config_main.cfg"
@@ -76,7 +73,6 @@ for /L %%f in (1,1,%max_folders%) do (
         echo Initialization of the file...
         ping -n 1 127.0.0.1 >nul
 
-        :: Генерация ошибок/предупреждений
         set /a "rnd_err=!random! %% 100"
         set "has_error=0"
         if !rnd_err! LSS 15 set "has_error=1"
@@ -98,7 +94,6 @@ for /L %%f in (1,1,%max_folders%) do (
         echo Please wait. Repairing...
         echo.
         
-        :: Цикл починки
         for /L %%k in (1,1,%seconds_per_file%) do (
             cls
             echo Directory: "C:\Program Files (x86)\Microsoft Visual Studio\Installer"
@@ -116,7 +111,6 @@ for /L %%f in (1,1,%max_folders%) do (
             if !spin_idx!==3 set "spinner=\"
             :: -------------------------
 
-            :: Прогресс-бар
             set /a "percent=(%%k * 100) / %seconds_per_file%"
             set /a "bars=(percent * 30) / 100"
             set /a "spaces=30 - bars"
