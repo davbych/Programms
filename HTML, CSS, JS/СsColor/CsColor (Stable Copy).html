@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>CSSColor — палитра с прозрачностью</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
+            transition: background 0.2s, color 0.2s;
+        }
+        body.light {
+            background: #eef2f5;
+            --card-bg: #ffffff;
+            --panel-bg: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border-light: #cbd5e1;
+            --input-bg: #ffffff;
+            --btn-bg: #e2e8f0;
+            --btn-hover: #cbd5e1;
+            --btn-active: #94a3b8;
+            --slider-bg: #e2e8f0;
+        }
+        body.dark {
+            background: #121826;
+            --card-bg: #1e293b;
+            --panel-bg: #0f172a;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border-light: #334155;
+            --input-bg: #0f172a;
+            --btn-bg: #334155;
+            --btn-hover: #475569;
+            --btn-active: #64748b;
+            --slider-bg: #334155;
+        }
+
+        :root {
+            --radius-factor: 6px;
+        }
+
+        .color-studio {
+            max-width: 1200px;
+            width: 95%;
+            background: var(--card-bg);
+            border-radius: var(--radius-factor);
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            transition: border-radius 0.05s linear, background 0.2s;
+            margin: 1rem;
+        }
+
+        .main-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .left-area {
+            flex: 1.5;
+            min-width: 280px;
+        }
+        .color-preview-square {
+            position: relative;
+            width: 650px;
+            max-width: 100%;
+            aspect-ratio: 1 / 1;
+            margin: 0 auto;
+            border-radius: var(--radius-factor);
+            overflow: hidden;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            cursor: default;
+            border: 2px solid var(--border-light);
+            transition: border-radius 0.05s linear;
+        }
+        canvas#mainColorPicker {
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: default;
+            border-radius: inherit;
+        }
+        .color-marker {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2px solid white;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.3);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            box-shadow: 0 0 0 1px black;
+            transition: none;
+            z-index: 2;
+        }
+        .color-marker.hidden {
+            display: none;
+        }
+
+        .alpha-slider-container {
+            margin-top: 32px;
+            width: 650px;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .alpha-gradient {
+            flex: 1;
+            height: 32px;
+            background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1));
+            border-radius: var(--radius-factor);
+            cursor: pointer;
+            position: relative;
+            border: 1px solid var(--border-light);
+            transition: border-radius 0.05s linear;
+        }
+        .alpha-thumb {
+            position: absolute;
+            width: 16px;
+            height: 38px;
+            background: transparent;
+            border: 2px solid white;
+            border-radius: 20px;
+            top: -3px;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+            pointer-events: none;
+            transition: border-radius 0.05s linear;
+        }
+        .alpha-value {
+            font-family: monospace;
+            font-size: 0.85rem;
+            min-width: 42px;
+            color: var(--text-primary);
+        }
+
+        .vertical-hue-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .vertical-hue {
+            width: 32px;
+            background: linear-gradient(to bottom, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+            border-radius: var(--radius-factor);
+            cursor: pointer;
+            position: relative;
+            margin: 0;
+            transition: border-radius 0.05s linear;
+        }
+        .vertical-hue-thumb {
+            position: absolute;
+            width: 38px;
+            height: 16px;
+            background: transparent;
+            border: 2px solid white;
+            border-radius: 20px;
+            left: -3px;
+            transform: translateY(-50%);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+            pointer-events: none;
+            transition: border-radius 0.05s linear;
+        }
+        .right-panel {
+            flex: 1;
+            min-width: 240px;
+        }
+        .selected-color-rect {
+            width: 100%;
+            height: 48px;
+            border-radius: var(--radius-factor);
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-light);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            transition: background 0.05s, border-radius 0.05s linear;
+        }
+        .code-group {
+            background: var(--panel-bg);
+            border-radius: var(--radius-factor);
+            padding: 0.5rem 0.8rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid var(--border-light);
+            transition: border-radius 0.05s linear;
+        }
+        .code-group label {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        .code-input {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid var(--border-light);
+            border-radius: calc(var(--radius-factor) * 0.6);
+            padding: 0.3rem 0.6rem;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            transition: 0.1s, border-radius 0.05s linear;
+        }
+        .code-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .button-bar {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            margin-top: 0.8rem;
+        }
+        .btn {
+            background: var(--btn-bg);
+            border: 1px solid var(--border-light);
+            padding: 6px 10px;
+            border-radius: var(--radius-factor);
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s, border-radius 0.05s linear;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+        .btn:hover {
+            background: var(--btn-hover);
+            transform: translateY(-1px);
+        }
+        .btn:active {
+            transform: translateY(1px);
+        }
+        .btn.active {
+            background: var(--btn-active);
+            color: white;
+            border-color: var(--btn-active);
+        }
+
+        .radius-slider-container {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--panel-bg);
+            padding: 8px 12px;
+            border-radius: var(--radius-factor);
+            border: 1px solid var(--border-light);
+            transition: border-radius 0.05s linear;
+        }
+        .radius-slider-label {
+            font-size: 1.2rem;
+            line-height: 1;
+            color: var(--text-secondary);
+        }
+        .radius-slider {
+            flex: 1;
+            height: 32px;
+            background: var(--slider-bg);
+            border-radius: var(--radius-factor);
+            cursor: pointer;
+            position: relative;
+            border: 1px solid var(--border-light);
+            transition: border-radius 0.05s linear;
+        }
+        .radius-thumb {
+            position: absolute;
+            width: 16px;
+            height: 38px;
+            background: transparent;
+            border: 2px solid white;
+            border-radius: 20px;
+            top: -3px;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+        .radius-value-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-family: monospace;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            background: var(--card-bg);
+            padding: 2px 6px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 2;
+            backdrop-filter: blur(2px);
+        }
+
+        .footer-note {
+            margin-top: 1.2rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+        @media (max-width: 700px) {
+            .color-preview-square, .alpha-slider-container {
+                width: 90vw;
+            }
+        }
+        @media (max-width: 800px) {
+            .vertical-hue {
+                width: 28px;
+            }
+            .vertical-hue-thumb {
+                width: 34px;
+            }
+            .btn {
+                padding: 5px 8px;
+                font-size: 0.7rem;
+            }
+            .button-bar {
+                flex-wrap: wrap;
+            }
+            .color-studio {
+                padding: 1rem;
+            }
+            .code-input {
+                font-size: 1rem;
+            }
+            .radius-value-center {
+                font-size: 0.7rem;
+                padding: 1px 4px;
+            }
+            .alpha-slider-container {
+                margin-top: 28px;
+            }
+        }
+    </style>
+</head>
+<body class="dark">
+<div class="color-studio">
+    <div class="main-layout">
+        <div class="left-area">
+            <div class="color-preview-square" id="colorSquareContainer">
+                <canvas id="mainColorPicker"></canvas>
+                <div class="color-marker" id="colorMarker"></div>
+            </div>
+            <div class="alpha-slider-container">
+                <div class="alpha-gradient" id="alphaGradient">
+                    <div class="alpha-thumb" id="alphaThumb"></div>
+                </div>
+                <div class="alpha-value" id="alphaValue">100%</div>
+            </div>
+        </div>
+
+        <div class="vertical-hue-container">
+            <div class="vertical-hue" id="verticalHue">
+                <div class="vertical-hue-thumb" id="verticalHueThumb"></div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="selected-color-rect" id="selectedColorRect"></div>
+
+            <div class="code-group">
+                <label>HEX</label>
+                <input type="text" id="hexInput" class="code-input" value="#9e212a">
+            </div>
+            <div class="code-group">
+                <label>RGB</label>
+                <input type="text" id="rgbInput" class="code-input" value="rgb(158, 33, 42)">
+            </div>
+            <div class="code-group">
+                <label>HSV</label>
+                <input type="text" id="hsvInput" class="code-input" value="hsv(356°, 79%, 62%)">
+            </div>
+            <div class="code-group">
+                <label>CMYK</label>
+                <input type="text" id="cmykInput" class="code-input" value="cmyk(0%, 79%, 74%, 38%)">
+            </div>
+            <div class="button-bar">
+                <button id="themeToggle" class="btn">🌓 Тема</button>
+                <button id="downloadColorBtn" class="btn">📥 Скачать</button>
+                <button id="toggleMarkerBtn" class="btn">👁️ Маркер</button>
+            </div>
+
+            <div class="radius-slider-container">
+                <span class="radius-slider-label">□</span>
+                <div class="radius-slider" id="radiusSlider">
+                    <div class="radius-thumb" id="radiusThumb"></div>
+                    <div class="radius-value-center" id="radiusValueCenter">6px</div>
+                </div>
+                <span class="radius-slider-label">○</span>
+            </div>
+        </div>
+    </div>
+    <div class="footer-note">
+        🖱️ Тяните маркер на квадрате (насыщенность/яркость), вертикальный ползунок (оттенок) или горизонтальный (прозрачность).<br>
+        🔘 Ползунок внизу меняет скругление всех элементов.
+    </div>
+</div>
+
+<script>
+    (function(){
+        const mainCanvas = document.getElementById('mainColorPicker');
+        const ctxMain = mainCanvas.getContext('2d');
+        
+        let currentHue = 0;
+        let currentSaturation = 0.5;
+        let currentValue = 0.5;
+        let currentAlpha = 1.0;
+        let showMarkerOnDrag = false;
+        
+        let canvasWidth = 0;
+        let canvasHeight = 0;
+        
+        function getRandomHsv() {
+            return {
+                h: Math.random() * 360,
+                s: 0.3 + Math.random() * 0.7,
+                v: 0.5 + Math.random() * 0.5
+            };
+        }
+        const randomColor = getRandomHsv();
+        currentHue = randomColor.h;
+        currentSaturation = randomColor.s;
+        currentValue = randomColor.v;
+        
+        const colorMarker = document.getElementById('colorMarker');
+        const selectedColorRect = document.getElementById('selectedColorRect');
+        const verticalHueDiv = document.getElementById('verticalHue');
+        const verticalHueThumb = document.getElementById('verticalHueThumb');
+        const alphaGradientDiv = document.getElementById('alphaGradient');
+        const alphaThumb = document.getElementById('alphaThumb');
+        const alphaValueSpan = document.getElementById('alphaValue');
+        const toggleMarkerBtn = document.getElementById('toggleMarkerBtn');
+        
+        const hexInput = document.getElementById('hexInput');
+        const rgbInput = document.getElementById('rgbInput');
+        const hsvInput = document.getElementById('hsvInput');
+        const cmykInput = document.getElementById('cmykInput');
+        
+        const radiusSlider = document.getElementById('radiusSlider');
+        const radiusThumb = document.getElementById('radiusThumb');
+        const radiusValueCenter = document.getElementById('radiusValueCenter');
+        
+        const squareContainer = document.getElementById('colorSquareContainer');
+        
+        let draggingSquare = false;
+        let draggingHueVertical = false;
+        let draggingAlpha = false;
+        let draggingRadius = false;
+        
+        // --- Преобразования цветов (без изменений) ---
+        function hsvToRgb(h, s, v) {
+            let c = v * s;
+            let x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+            let m = v - c;
+            let r1 = 0, g1 = 0, b1 = 0;
+            if (h < 60) { r1 = c; g1 = x; b1 = 0; }
+            else if (h < 120) { r1 = x; g1 = c; b1 = 0; }
+            else if (h < 180) { r1 = 0; g1 = c; b1 = x; }
+            else if (h < 240) { r1 = 0; g1 = x; b1 = c; }
+            else if (h < 300) { r1 = x; g1 = 0; b1 = c; }
+            else { r1 = c; g1 = 0; b1 = x; }
+            return {
+                r: Math.round((r1 + m) * 255),
+                g: Math.round((g1 + m) * 255),
+                b: Math.round((b1 + m) * 255)
+            };
+        }
+        
+        function rgbToHsv(r, g, b) {
+            let rn = r / 255, gn = g / 255, bn = b / 255;
+            let max = Math.max(rn, gn, bn), min = Math.min(rn, gn, bn);
+            let h, s, v = max;
+            let d = max - min;
+            s = max === 0 ? 0 : d / max;
+            if (max === min) h = 0;
+            else {
+                if (max === rn) h = (gn - bn) / d + (gn < bn ? 6 : 0);
+                else if (max === gn) h = (bn - rn) / d + 2;
+                else h = (rn - gn) / d + 4;
+                h *= 60;
+            }
+            return { h: Math.round(h), s: parseFloat(s.toFixed(4)), v: parseFloat(v.toFixed(4)) };
+        }
+        
+        function rgbToCmyk(r, g, b) {
+            let rn = r / 255, gn = g / 255, bn = b / 255;
+            let k = 1 - Math.max(rn, gn, bn);
+            if (k === 1) return { c: 0, m: 0, y: 0, k: 100 };
+            let c = (1 - rn - k) / (1 - k);
+            let m = (1 - gn - k) / (1 - k);
+            let y = (1 - bn - k) / (1 - k);
+            return { c: Math.round(c * 100), m: Math.round(m * 100), y: Math.round(y * 100), k: Math.round(k * 100) };
+        }
+        
+        function cmykToRgb(c, m, y, k) {
+            let r = 255 * (1 - c / 100) * (1 - k / 100);
+            let g = 255 * (1 - m / 100) * (1 - k / 100);
+            let b = 255 * (1 - y / 100) * (1 - k / 100);
+            return { r: Math.round(r), g: Math.round(g), b: Math.round(b) };
+        }
+        
+        function rgbToHex(r, g, b, alpha = 1) {
+            let hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+            if (alpha < 1) {
+                let alphaHex = Math.round(alpha * 255).toString(16).padStart(2, '0').toUpperCase();
+                hex += alphaHex;
+            }
+            return hex;
+        }
+        
+        function hexToRgba(hex) {
+            let h = hex.replace('#', '');
+            let alpha = 1;
+            if (h.length === 8) {
+                alpha = parseInt(h.substring(6, 8), 16) / 255;
+                h = h.substring(0, 6);
+            } else if (h.length === 3) {
+                h = h.split('').map(c => c + c).join('');
+            }
+            let r = parseInt(h.substring(0, 2), 16);
+            let g = parseInt(h.substring(2, 4), 16);
+            let b = parseInt(h.substring(4, 6), 16);
+            return { r, g, b, alpha };
+        }
+        
+        function parseRgbString(str) {
+            let match = str.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/i);
+            if (match) {
+                let alpha = match[4] !== undefined ? parseFloat(match[4]) : 1;
+                return { r: +match[1], g: +match[2], b: +match[3], alpha };
+            }
+            match = str.match(/(\d+),\s*(\d+),\s*(\d+)/);
+            if (match) return { r: +match[1], g: +match[2], b: +match[3], alpha: 1 };
+            return null;
+        }
+        
+        function parseHsvString(str) {
+            let match = str.match(/hsv\((\d+)[°\s]*,\s*(\d+)%?,\s*(\d+)%?(?:,\s*([\d.]+))?\)/i);
+            if (match) return { h: +match[1], s: +match[2] / 100, v: +match[3] / 100, alpha: match[4] !== undefined ? +match[4] : 1 };
+            match = str.match(/(\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?/);
+            if (match) return { h: +match[1], s: +match[2] / 100, v: +match[3] / 100, alpha: match[4] !== undefined ? +match[4] : 1 };
+            return null;
+        }
+        
+        function parseCmykString(str) {
+            let match = str.match(/cmyk\((\d+)%?,\s*(\d+)%?,\s*(\d+)%?,\s*(\d+)%?(?:,\s*([\d.]+))?\)/i);
+            if (match) return { c: +match[1], m: +match[2], y: +match[3], k: +match[4], alpha: match[5] !== undefined ? +match[5] : 1 };
+            match = str.match(/(\d+),\s*(\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?/);
+            if (match) return { c: +match[1], m: +match[2], y: +match[3], k: +match[4], alpha: match[5] !== undefined ? +match[5] : 1 };
+            return null;
+        }
+        
+        function resizeCanvas() {
+            const rect = squareContainer.getBoundingClientRect();
+            let size = Math.floor(rect.width);
+            if (size < 10) size = 650;
+            canvasWidth = size;
+            canvasHeight = size;
+            mainCanvas.width = canvasWidth;
+            mainCanvas.height = canvasHeight;
+            drawColorMap();
+            updateMarkerPosition();
+        }
+        
+        function updateAllFromHSVAndAlpha() {
+            let rgb = hsvToRgb(currentHue, currentSaturation, currentValue);
+            let hex = rgbToHex(rgb.r, rgb.g, rgb.b, currentAlpha);
+            let cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
+            
+            let rgbStr = currentAlpha === 1 ? `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})` : `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${currentAlpha.toFixed(2)})`;
+            let hsvStr = currentAlpha === 1 ? `hsv(${Math.round(currentHue)}°, ${Math.round(currentSaturation*100)}%, ${Math.round(currentValue*100)}%)` : `hsv(${Math.round(currentHue)}°, ${Math.round(currentSaturation*100)}%, ${Math.round(currentValue*100)}%, ${currentAlpha.toFixed(2)})`;
+            let cmykStr = currentAlpha === 1 ? `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)` : `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%, ${currentAlpha.toFixed(2)})`;
+            
+            hexInput.value = hex;
+            rgbInput.value = rgbStr;
+            hsvInput.value = hsvStr;
+            cmykInput.value = cmykStr;
+            
+            selectedColorRect.style.backgroundColor = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${currentAlpha})`;
+            drawColorMap();
+            if (!draggingSquare || showMarkerOnDrag) {
+                updateMarkerPosition();
+                colorMarker.classList.remove('hidden');
+            } else {
+                colorMarker.classList.add('hidden');
+            }
+            updateVerticalHueThumb();
+            updateAlphaThumb();
+            alphaValueSpan.innerText = `${Math.round(currentAlpha * 100)}%`;
+        }
+        
+        function drawColorMap() {
+            if (canvasWidth === 0) return;
+            let imgData = ctxMain.createImageData(canvasWidth, canvasHeight);
+            for (let y = 0; y < canvasHeight; y++) {
+                let vy = 1 - (y / canvasHeight);
+                for (let x = 0; x < canvasWidth; x++) {
+                    let sx = x / canvasWidth;
+                    let rgb = hsvToRgb(currentHue, sx, vy);
+                    let idx = (y * canvasWidth + x) * 4;
+                    imgData.data[idx] = rgb.r;
+                    imgData.data[idx+1] = rgb.g;
+                    imgData.data[idx+2] = rgb.b;
+                    imgData.data[idx+3] = 255;
+                }
+            }
+            ctxMain.putImageData(imgData, 0, 0);
+        }
+        
+        function updateMarkerPosition() {
+            if (canvasWidth === 0) return;
+            let x = currentSaturation * canvasWidth;
+            let y = (1 - currentValue) * canvasHeight;
+            colorMarker.style.left = x + 'px';
+            colorMarker.style.top = y + 'px';
+        }
+        
+        function updateVerticalHueThumb() {
+            let percent = currentHue / 360;
+            let parentHeight = verticalHueDiv.clientHeight;
+            let topPos = percent * parentHeight;
+            verticalHueThumb.style.top = topPos + 'px';
+        }
+        
+        function updateAlphaThumb() {
+            let percent = currentAlpha;
+            let parentWidth = alphaGradientDiv.clientWidth;
+            alphaThumb.style.left = (percent * parentWidth) + 'px';
+        }
+        
+        function getSaturationAndValueFromClient(clientX, clientY) {
+            const rect = mainCanvas.getBoundingClientRect();
+            if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) return null;
+            let canvasX = clientX - rect.left;
+            let canvasY = clientY - rect.top;
+            canvasX = Math.min(Math.max(0, canvasX), canvasWidth - 1);
+            canvasY = Math.min(Math.max(0, canvasY), canvasHeight - 1);
+            let s = canvasX / canvasWidth;
+            let v = 1 - (canvasY / canvasHeight);
+            return { s, v };
+        }
+        
+        function setColorFromSquareCoords(clientX, clientY) {
+            let sv = getSaturationAndValueFromClient(clientX, clientY);
+            if (sv) {
+                currentSaturation = sv.s;
+                currentValue = sv.v;
+                updateAllFromHSVAndAlpha();
+                return true;
+            }
+            return false;
+        }
+        
+        function setHueFromVertical(clientY) {
+            const rect = verticalHueDiv.getBoundingClientRect();
+            let y = clientY - rect.top;
+            let percent = Math.min(1, Math.max(0, y / rect.height));
+            currentHue = percent * 360;
+            updateAllFromHSVAndAlpha();
+        }
+        
+        function setAlphaFromHorizontal(clientX) {
+            const rect = alphaGradientDiv.getBoundingClientRect();
+            let x = clientX - rect.left;
+            let percent = Math.min(1, Math.max(0, x / rect.width));
+            currentAlpha = percent;
+            updateAllFromHSVAndAlpha();
+        }
+        
+        function setRadiusFromHorizontal(clientX) {
+            const rect = radiusSlider.getBoundingClientRect();
+            let x = clientX - rect.left;
+            let percent = Math.min(1, Math.max(0, x / rect.width));
+            let radius = Math.round(percent * 30);
+            document.documentElement.style.setProperty('--radius-factor', radius + 'px');
+            if (radiusValueCenter) radiusValueCenter.innerText = radius + 'px';
+            let thumbPercent = radius / 30;
+            radiusThumb.style.left = (thumbPercent * rect.width) + 'px';
+        }
+        
+        function updateRadiusThumbPosition() {
+            let currentRadius = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--radius-factor'));
+            if (isNaN(currentRadius)) currentRadius = 6;
+            let percent = currentRadius / 30;
+            let parentWidth = radiusSlider.clientWidth;
+            radiusThumb.style.left = (percent * parentWidth) + 'px';
+            if (radiusValueCenter) radiusValueCenter.innerText = currentRadius + 'px';
+        }
+        
+        // --- Drag handlers ---
+        function onSquareDragStart(e) {
+            draggingSquare = true;
+            let clientX, clientY;
+            if (e.touches) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+                e.preventDefault();
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+            setColorFromSquareCoords(clientX, clientY);
+            if (!showMarkerOnDrag) {
+                colorMarker.classList.add('hidden');
+            } else {
+                colorMarker.classList.remove('hidden');
+                updateMarkerPosition();
+            }
+        }
+        
+        function onSquareDragMove(e) {
+            if (!draggingSquare) return;
+            let clientX, clientY;
+            if (e.touches) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+                e.preventDefault();
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+            setColorFromSquareCoords(clientX, clientY);
+        }
+        
+        function onSquareDragEnd() {
+            draggingSquare = false;
+            colorMarker.classList.remove('hidden');
+            updateMarkerPosition();
+        }
+        
+        function onHueVerticalDragStart(e) {
+            draggingHueVertical = true;
+            let clientY = e.clientY ?? (e.touches ? e.touches[0].clientY : 0);
+            setHueFromVertical(clientY);
+            e.preventDefault();
+        }
+        function onHueVerticalDragMove(e) {
+            if (!draggingHueVertical) return;
+            let clientY = e.clientY ?? (e.touches ? e.touches[0].clientY : 0);
+            setHueFromVertical(clientY);
+            e.preventDefault();
+        }
+        function onHueVerticalDragEnd() {
+            draggingHueVertical = false;
+        }
+        
+        function onAlphaDragStart(e) {
+            draggingAlpha = true;
+            let clientX = e.clientX ?? (e.touches ? e.touches[0].clientX : 0);
+            setAlphaFromHorizontal(clientX);
+            e.preventDefault();
+        }
+        function onAlphaDragMove(e) {
+            if (!draggingAlpha) return;
+            let clientX = e.clientX ?? (e.touches ? e.touches[0].clientX : 0);
+            setAlphaFromHorizontal(clientX);
+            e.preventDefault();
+        }
+        function onAlphaDragEnd() {
+            draggingAlpha = false;
+        }
+        
+        function onRadiusDragStart(e) {
+            draggingRadius = true;
+            let clientX = e.clientX ?? (e.touches ? e.touches[0].clientX : 0);
+            setRadiusFromHorizontal(clientX);
+            e.preventDefault();
+        }
+        function onRadiusDragMove(e) {
+            if (!draggingRadius) return;
+            let clientX = e.clientX ?? (e.touches ? e.touches[0].clientX : 0);
+            setRadiusFromHorizontal(clientX);
+            e.preventDefault();
+        }
+        function onRadiusDragEnd() {
+            draggingRadius = false;
+        }
+        
+        // --- Обработчики ввода ---
+        function syncFromHex() {
+            let val = hexInput.value.trim();
+            if (!val.startsWith('#')) val = '#' + val;
+            if (/^#[0-9A-Fa-f]{6}$|^#[0-9A-Fa-f]{8}$/.test(val)) {
+                let rgba = hexToRgba(val);
+                let hsv = rgbToHsv(rgba.r, rgba.g, rgba.b);
+                currentHue = hsv.h;
+                currentSaturation = hsv.s;
+                currentValue = hsv.v;
+                currentAlpha = rgba.alpha;
+                updateAllFromHSVAndAlpha();
+            }
+        }
+        function syncFromRgb() {
+            let parsed = parseRgbString(rgbInput.value);
+            if (parsed) {
+                let hsv = rgbToHsv(parsed.r, parsed.g, parsed.b);
+                currentHue = hsv.h;
+                currentSaturation = hsv.s;
+                currentValue = hsv.v;
+                currentAlpha = parsed.alpha;
+                updateAllFromHSVAndAlpha();
+            }
+        }
+        function syncFromHsv() {
+            let parsed = parseHsvString(hsvInput.value);
+            if (parsed) {
+                currentHue = parsed.h;
+                currentSaturation = Math.min(1, Math.max(0, parsed.s));
+                currentValue = Math.min(1, Math.max(0, parsed.v));
+                if (parsed.alpha !== undefined) currentAlpha = parsed.alpha;
+                updateAllFromHSVAndAlpha();
+            }
+        }
+        function syncFromCmyk() {
+            let parsed = parseCmykString(cmykInput.value);
+            if (parsed) {
+                let rgb = cmykToRgb(parsed.c, parsed.m, parsed.y, parsed.k);
+                let hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
+                currentHue = hsv.h;
+                currentSaturation = hsv.s;
+                currentValue = hsv.v;
+                if (parsed.alpha !== undefined) currentAlpha = parsed.alpha;
+                updateAllFromHSVAndAlpha();
+            }
+        }
+        
+        function syncVerticalHueHeight() {
+            const square = squareContainer;
+            if (square) {
+                const height = square.clientHeight;
+                verticalHueDiv.style.height = height + 'px';
+                updateVerticalHueThumb();
+            }
+        }
+        
+        function toggleMarkerVisibility() {
+            showMarkerOnDrag = !showMarkerOnDrag;
+            if (showMarkerOnDrag) {
+                toggleMarkerBtn.classList.add('active');
+                if (draggingSquare) {
+                    colorMarker.classList.remove('hidden');
+                    updateMarkerPosition();
+                }
+            } else {
+                toggleMarkerBtn.classList.remove('active');
+                if (draggingSquare) {
+                    colorMarker.classList.add('hidden');
+                }
+            }
+        }
+        
+        function initEvents() {
+            mainCanvas.addEventListener('mousedown', onSquareDragStart);
+            window.addEventListener('mousemove', onSquareDragMove);
+            window.addEventListener('mouseup', onSquareDragEnd);
+            mainCanvas.addEventListener('touchstart', onSquareDragStart);
+            window.addEventListener('touchmove', onSquareDragMove);
+            window.addEventListener('touchend', onSquareDragEnd);
+            
+            verticalHueDiv.addEventListener('mousedown', onHueVerticalDragStart);
+            window.addEventListener('mousemove', onHueVerticalDragMove);
+            window.addEventListener('mouseup', onHueVerticalDragEnd);
+            verticalHueDiv.addEventListener('touchstart', onHueVerticalDragStart);
+            window.addEventListener('touchmove', onHueVerticalDragMove);
+            window.addEventListener('touchend', onHueVerticalDragEnd);
+            
+            alphaGradientDiv.addEventListener('mousedown', onAlphaDragStart);
+            window.addEventListener('mousemove', onAlphaDragMove);
+            window.addEventListener('mouseup', onAlphaDragEnd);
+            alphaGradientDiv.addEventListener('touchstart', onAlphaDragStart);
+            window.addEventListener('touchmove', onAlphaDragMove);
+            window.addEventListener('touchend', onAlphaDragEnd);
+            
+            radiusSlider.addEventListener('mousedown', onRadiusDragStart);
+            window.addEventListener('mousemove', onRadiusDragMove);
+            window.addEventListener('mouseup', onRadiusDragEnd);
+            radiusSlider.addEventListener('touchstart', onRadiusDragStart);
+            window.addEventListener('touchmove', onRadiusDragMove);
+            window.addEventListener('touchend', onRadiusDragEnd);
+            
+            hexInput.addEventListener('input', syncFromHex);
+            rgbInput.addEventListener('input', syncFromRgb);
+            hsvInput.addEventListener('input', syncFromHsv);
+            cmykInput.addEventListener('input', syncFromCmyk);
+            
+            document.getElementById('downloadColorBtn').addEventListener('click', () => {
+                let rgb = hsvToRgb(currentHue, currentSaturation, currentValue);
+                let hex = rgbToHex(rgb.r, rgb.g, rgb.b, currentAlpha);
+                const canvas = document.createElement('canvas');
+                canvas.width = 400;
+                canvas.height = 400;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = hex;
+                ctx.fillRect(0, 0, 400, 400);
+                const link = document.createElement('a');
+                link.download = `color_${hex.slice(1)}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+            
+            document.getElementById('themeToggle').addEventListener('click', () => {
+                document.body.classList.toggle('light');
+                document.body.classList.toggle('dark');
+            });
+            
+            toggleMarkerBtn.addEventListener('click', toggleMarkerVisibility);
+            
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                syncVerticalHueHeight();
+                updateVerticalHueThumb();
+                updateAlphaThumb();
+                updateRadiusThumbPosition();
+                updateMarkerPosition();
+            });
+            const resizeObserver = new ResizeObserver(() => {
+                resizeCanvas();
+                syncVerticalHueHeight();
+                updateRadiusThumbPosition();
+                updateMarkerPosition();
+            });
+            resizeObserver.observe(squareContainer);
+        }
+        
+        function init() {
+            initEvents();
+            resizeCanvas();
+            syncVerticalHueHeight();
+            updateAllFromHSVAndAlpha();
+            document.documentElement.style.setProperty('--radius-factor', '6px');
+            if (radiusValueCenter) radiusValueCenter.innerText = '6px';
+            setTimeout(() => {
+                updateVerticalHueThumb();
+                updateAlphaThumb();
+                updateRadiusThumbPosition();
+                updateMarkerPosition();
+            }, 50);
+        }
+        init();
+    })();
+</script>
+</body>
+</html>
