@@ -1,54 +1,20 @@
+#---IMPORTS-----------------------------------------------#
 import pyautogui as pag
 import pydirectinput as pdi
 import time
 
-#------------------------FUNCTIONS------------------------#
-##------system_functions------##
-pag.PAUSE = 0.05
-pag.FAILSAFE = True
-
-def longStart():
-    while True:
-        print("\nDavby's AHK script\n"
-              "1. Action1\n"
-              "2. Action2\n"
-              "3. Tonnel(1x6)\n"
-              "4. Pos. Mouse\n"
-              "5. (EMPTY)\n"
-              "6. Exit\n")
-        choice = input("Enter your choice: ")
-        if choice == "1":
-            action1()
-        elif choice == "2":
-            action2()
-        elif choice == "3":
-            tonnel1x6()
-        elif choice == "4":
-            posmouse()
-        elif choice == "5":
-            pass
-        elif choice == "6":
-            break
-        else:
-            print("\nInvalid choice!")
-
-##------script_funct1ions------##
-def action1():
+#---BODY--------------------------------------------------#
+def script1():
     pass
-def action2():
+def script2():
     for i in range(5,0,-1):
         print("Time left:", i)
         time.sleep(1)
-    for _ in range(1, 33+1):
-        pdi.press("home")
-        pdi.press("right")
-        pdi.press("backspace")
-        pdi.keyDown("shift")
-        pdi.press("d")
-        pdi.keyUp("shift")
-        for _ in range(1, 11+1):
-            pdi.press("right")
-        for _ in range(1, 5+1):
+    for _ in range(1, 43+1):
+        pdi.press("end")
+        for _ in range(1, 4+1):
+            pdi.press("left")
+        for _ in range(1, 3+1):
             pdi.press("backspace")
         pdi.press("9")
         pdi.press(".")
@@ -56,17 +22,15 @@ def action2():
         pdi.press(".")
         pdi.press("1")
         pdi.press("down")
-def altab():
-    pag.keyDown("alt")
-    pag.keyDown("tab")
-    time.sleep(0.1)
-    pag.keyUp("alt")
-    pag.keyUp("tab")
-def posmouse():
-    print(f"###\nMouse's position: {pag.position()} \n###")
-def shahta3x3(): #Minecraft: Встать по центру круга с радиусом 3 и смотреть ЧЁТКО вниз (0.0; 90.0)
+def script3():
+    pdi.keyDown("alt")
+    pdi.keyDown("tab")
+    time.sleep(1)
+    pdi.keyUp("alt")
+    pdi.keyUp("tab")
+def script4(): #Minecraft: Встать по центру круга с радиусом 3 и смотреть ЧЁТКО вниз (0.0; 90.0)
     pause = 0.3
-    altab()
+    script3() #Alt + Tab
     for i in range(10):
         for i in range(4):
             time.sleep(0.5)
@@ -119,10 +83,9 @@ def shahta3x3(): #Minecraft: Встать по центру круга с рад
         pag.mouseDown()
         time.sleep(pause)
         pag.mouseUp()
-def tonnel1x6():
+def script5():
     minetime = 0.5
-    altab()
-
+    script3() #Alt + Tab
     for i in range(20):
         pag.mouseDown()
         time.sleep(minetime)
@@ -157,10 +120,64 @@ def tonnel1x6():
         pag.keyDown("w")
         time.sleep(0.3)
         pag.keyUp("w")
-def craft():
+def script6():
     pass
 
-#------------------------ACTIONS------------------------#
-longStart()
-#shahta3x3()
-#tonnel1x6()
+def restart():
+    pdi.click(1397, 14)
+
+
+pdi.PAUSE = 0.05
+pdi.FAILSAFE = True
+scripts_list = [
+    ("Скрипт 1", "Действие 1", script1, True),
+    ("Скрипт 2", "9.7.1", script2, False),
+    ("Скрипт 3", "Alt + Tab", script3, True),
+    ("Скрипт 4", "Minecraft (mine 3x3)", script4, True),
+    ("Скрипт 5", "Minecraft (tonnel 1x6)", script5, True),
+    ("Скрипт 6", "Minecraft (craft)", script6, True),
+]
+
+def main():
+    active = [(name, desc, func) for name, desc, func, active in scripts_list if active]
+    while True:
+        print("\n+---Davby's AHK scripts---")
+        for i, (name, desc, _) in enumerate(active, 1):
+            print(f"| {i}. {name} - {desc}")
+        print(f"| {len(active) + 1}. Выключить программу")
+        print(f"| {len(active) + 2}. Перезапустить программу\n+", "-" * 25, sep="")
+        pdi.click(1500, 370)
+
+        try:
+            choice = int(input("Введите номер пункта: "))
+        except ValueError:
+            print("\n+---Davby's AHK scripts---")
+            print(f"| Введённые данные не являются цифрой!\n+", "-" * 25, sep="")
+            continue
+
+        if 1 <= choice <= len(active):
+            name, desc, func = active[choice - 1]
+            print("\n+---Davby's AHK scripts---")
+            print(f"| Выполнение {name} ({desc})...\n+", "-" * 25, sep="")
+            try:
+                func()
+            except Exception as e:
+                print("\n+---Davby's AHK scripts---")
+                print(f"| Выполнение скрипта остановлено из-за ошибки: {e}\n+", "-" * 25, sep="")
+        elif choice == len(active) + 1:
+            print("\n+---Davby's AHK scripts---")
+            print("| Завершение работы программы...\n+", "-" * 25, sep="")
+            break
+        elif choice == len(active) + 2:
+            print("\n+---Davby's AHK scripts---")
+            print(f"| Перезапуск программы...\n+", "-" * 25, sep="")
+            time.sleep(1)
+            restart()
+        else:
+            print("\n+---Davby's AHK scripts---")
+            print(f"| Пункт ({choice}) не существует.\n+", "-" * 25, sep="")
+            continue
+
+#---ACTIONS----------------------------------------------#
+if __name__ == '__main__':
+    main()
