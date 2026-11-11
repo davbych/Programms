@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Змейка</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        /* Зелёный ободок вокруг игры */
+        .game-wrapper {
+            border: 3px solid #00ff00;
+            display: inline-block;
+        }
+        
+        canvas {
+            display: block;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-wrapper">
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+    </div>
+
+    <script>
+        console.log("Для начала игры нажмите кнопку 'Enter' или 'Space'")
+        // ========== НАСТРОЙКИ ==========
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        const size = 20;          // Размер одной клетки в пикселях
+        const width = 20;         // Ширина поля в клетках (400/20 = 20)
+        const height = 20;        // Высота поля в клетках
+        
+        // ========== ПЕРЕМЕННЫЕ ==========
+        let snake = [             // Змейка (массив сегментов)
+            {x: 10, y: 10},      // Голова
+            {x: 9, y: 10},       // Тело
+            {x: 8, y: 10}        // Хвост
+        ];
+        
+        let direction = 'right';   // Текущее направление
+        let nextDirection = 'right'; // Следующее направление (для предотвращения багов)
+        let food = {x: 15, y: 10}; // Еда
+        let gameRunning = false;    // Игра активна? (false - не запущена)
+        let gameLoopId = null;      // ID таймера для остановки
+        let foodCount = 0;          // Счётчик съеденных яблок
+        
+        // ========== УПРАВЛЕНИЕ С КЛАВИАТУРЫ ==========
+        document.addEventListener('keydown', function(event) {
+            // Запрещаем движение, если игра не запущена
+            if (!gameRunning) return;
+            
+            // Стрелка вверх
+            if (event.key === 'ArrowUp' && direction !== 'down') {
+                nextDirection = 'up';
+            }
+            // Стрелка вниз
+            else if (event.key === 'ArrowDown' && direction !== 'up') {
+                nextDirection = 'down';
+            }
+            // Стрелка влево
+            else if (event.key === 'ArrowLeft' && direction !== 'right') {
+                nextDirection = 'left';
+            }
+            // Стрелка вправо
+            else if (event.key === 'ArrowRight' && direction !== 'left') {
+                nextDirection = 'right';
+            }
+        });
+        
+        // ========== ЛОГИКА ИГРЫ ==========
+        
+        // Перезапуск игры
+        function restartGame() {
+            // Останавливаем текущую игру
+            if (gameLoopId) {
+                clearInterval(gameLoopId);
+                gameLoopId = null;
+            }
+            
+            // Сбрасываем все переменные
+            snake = [
+                {x: 10, y: 10},
+                {x: 9, y: 10},
+                {x: 8, y: 10}
+            ];
+            direction = 'right';
+            nextDirection = 'right';
+            gameRunning = true;
+            foodCount = 0; // Сбрасываем счётчик яблок
+            
+            // Генерируем первую еду
+            generateNewFood();
+            
+            // Рисуем начальное состояние
+            draw();
+            
+            // Запускаем игровой цикл
+            gameLoopId = setInterval(gameUpdate, 150);
+        }
+        
+        // Движение змейки
+        function moveSnake() {
+            // Применяем следующее направление
+            direction = nextDirection;
+            
+            // Создаём новую голову
+            let newHead = {x: snake[0].x, y: snake[0].y};
+            
+            // Вычисляем новую позицию головы в зависимости от направления
+            if (direction === 'right') newHead.x += 1;
+            if (direction === 'left') newHead.x -= 1;
+            if (direction === 'up') newHead.y -= 1;
+            if (direction === 'down') newHead.y += 1;
+            
+            // Вставляем новую голову в начало массива
+            snake.unshift(newHead);
+            
+            // Проверяем, съела ли змейка еду
+            if (newHead.x === food.x && newHead.y === food.y) {
+                // Съели еду - не удаляем хвост (змейка растёт)
+                foodCount++;
+                console.log("+ Змейка съела яблоко № " + foodCount);
+                generateNewFood();
+            } else {
+                // Не съели - удаляем хвост
+                snake.pop();
+            }
+        }
+        
+        // Генерация новой еды
+        function generateNewFood() {
+            // Случайные координаты
+            let newX = Math.floor(Math.random() * width);
+            let newY = Math.floor(Math.random() * height);
+            
+            // Проверяем, не попала ли еда на змейку
+            let isOnSnake = false;
+            for (let i = 0; i < snake.length; i++) {
+                if (snake[i].x === newX && snake[i].y === newY) {
+                    isOnSnake = true;
+                    break;
+                }
+            }
+            
+            // Если еда на змейке, генерируем заново
+            if (isOnSnake) {
+                generateNewFood();
+            } else {
+                food = {x: newX, y: newY};
+            }
+        }
+        
+        // Проверка столкновений
+        function checkCollision() {
+            const head = snake[0];
+            
+            // Столкновение со стеной
+            if (head.x < 0 || head.x >= width || head.y < 0 || head.y >= height) {
+                console.log("- Столкновение змейки со стеной! Нажмите 'Enter' или 'Пробел' для перезапуска игры.");
+                return true;
+            }
+            
+            // Столкновение с самим собой
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) {
+                    console.log("- Столкновение змейки со своим телом! Нажмите 'Enter' или 'Пробел' для перезапуска игры.");
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+        
+        // ========== ОТРИСОВКА ==========
+        function draw() {
+            // Очищаем экран (чёрный фон)
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Рисуем еду (красный квадрат)
+            ctx.fillStyle = 'red';
+            ctx.fillRect(food.x * size, food.y * size, size - 1, size - 1);
+            
+            // Рисуем змейку (зелёные квадраты)
+            ctx.fillStyle = 'lime';
+            for (let i = 0; i < snake.length; i++) {
+                ctx.fillRect(snake[i].x * size, snake[i].y * size, size - 1, size - 1);
+            }
+        }
+        
+        // ========== ИГРОВОЙ ЦИКЛ ==========
+        function gameUpdate() {
+            if (!gameRunning) return;
+            
+            moveSnake();        // Двигаем змейку
+            
+            // Проверяем столкновения после движения
+            if (checkCollision()) {
+                gameRunning = false;
+                if (gameLoopId) {
+                    clearInterval(gameLoopId);
+                    gameLoopId = null;
+                }
+                draw(); // Перерисовываем для отображения последнего состояния
+                return;
+            }
+            
+            draw();             // Рисуем всё на экране
+        }
+        
+        // ========== ЗАПУСК И ПЕРЕЗАПУСК ==========
+        // Генерируем первую еду в случайном месте
+        generateNewFood();
+        // Рисуем начальное состояние (игра не запущена)
+        draw();
+        
+        // Общий обработчик для запуска и перезапуска по Enter и Пробел
+        document.addEventListener('keydown', function(event) {
+            // Проверяем нажатие Enter или Пробел
+            if (event.key === ' ' || event.key === 'Space' || event.key === 'Enter') {
+                event.preventDefault();
+                
+                // Если игра не запущена (или закончена) - запускаем/перезапускаем
+                if (!gameRunning) {
+                    restartGame();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
