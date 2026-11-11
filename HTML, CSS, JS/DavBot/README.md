@@ -1,6 +1,7 @@
-Open CLI in "...\\JavaScript\\DavBot\\" and write next commands:
+Open CLI in "...\\JavaScript\\DavBot\\"  and write next commands:
 
 
+0\) cd /d [disk]:/[path]/DavBot
 
 1\) npm install
 
