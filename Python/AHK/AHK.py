@@ -124,7 +124,9 @@ def script6():
     pass
 
 def restart():
-    pdi.click(1397, 14)
+    #pdi.click(1397, 14) #Monitor - 1920 x 1080
+    #pdi.click(2200, 20) #Monitor - 2560 x 1440
+    return 
 
 
 pdi.PAUSE = 0.05
