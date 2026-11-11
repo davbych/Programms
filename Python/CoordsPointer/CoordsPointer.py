@@ -65,10 +65,10 @@ def main():
     def copy_pag(_=None):
         x, y = get_copy_coords()
         root.clipboard_clear()
-        root.clipboard_append(f"pydirectinput.moveTo({x}, {y})")
+        root.clipboard_append(f"pydirectinput.click({x}, {y})")
         show_msg("Скопировано! (Формат: PDI)", color="yellow")
         now = datetime.now().strftime("%H:%M:%S")
-        log.config(text=f"{now} | PAG({x}, {y})")
+        log.config(text=f"{now} | PDI({x}, {y})")
 
     def update_coords():
         if not root.winfo_exists():
