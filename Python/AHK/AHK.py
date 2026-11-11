@@ -138,7 +138,7 @@ scripts_list = [
     ("Скрипт 6", "Minecraft (craft)", script6, True),
 ]
 
-def main():
+def ahk():
     active = [(name, desc, func) for name, desc, func, active in scripts_list if active]
     while True:
         print("\n+---Davby's AHK scripts---")
@@ -180,4 +180,4 @@ def main():
 
 #---ACTIONS----------------------------------------------#
 if __name__ == '__main__':
-    main()
+    ahk()
