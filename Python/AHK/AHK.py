@@ -136,7 +136,7 @@ scripts_list = [ #False - скрипт не активен, True - скрипт 
     ("Скрипт 2", "9.7.1", script2, False),
     ("Скрипт 3", "Alt + Tab", script3, True),
     ("Скрипт 4", "Minecraft (mine 3x3)", script4, True),
-    ("Скрипт 5", "Minecraft (tonnel 1x6)", script5, True),
+    ("Скрипт 5", "Minecraft (tunnel 1x6)", script5, True),
     ("Скрипт 6", "Minecraft (craft)", script6, True),
 ]
 
