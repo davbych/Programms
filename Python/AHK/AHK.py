@@ -131,7 +131,7 @@ def restart():
 
 pdi.PAUSE = 0.05
 pdi.FAILSAFE = True
-scripts_list = [
+scripts_list = [ #False - скрипт не активен, True - скрипт активен
     ("Скрипт 1", "Действие 1", script1, True),
     ("Скрипт 2", "9.7.1", script2, False),
     ("Скрипт 3", "Alt + Tab", script3, True),
