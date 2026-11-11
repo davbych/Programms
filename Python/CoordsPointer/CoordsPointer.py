@@ -62,7 +62,7 @@ def coords_pointer():
         now = datetime.now().strftime("%H:%M:%S")
         log.config(text=f"{now} | {x}, {y}")
 
-    def copy_pag(_=None):
+    def copy_pdi(_=None):
         x, y = get_copy_coords()
         root.clipboard_clear()
         root.clipboard_append(f"pydirectinput.click({x}, {y})")
@@ -86,7 +86,7 @@ def coords_pointer():
     root.bind("<Escape>", lambda e: root.destroy())
     root.bind("<space>", toggle_pause)
     root.bind("<Button-1>", copy_xy)
-    root.bind("<Button-3>", copy_pag)
+    root.bind("<Button-3>", copy_pdi)
     update_coords()
     root.mainloop()
 
