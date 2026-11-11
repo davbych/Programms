@@ -1,7 +1,7 @@
 import tkinter as tk
 from datetime import datetime
 
-def main():
+def coords_pointer():
     print("""+---БИНДЫ---
 | ЛКМ (в окне) - Скопировать в формате 'X, Y'
 | ПКМ (в окне) - Скопировать в формате 'pydirectinput.moveTo(X, Y)'
@@ -91,4 +91,4 @@ def main():
     root.mainloop()
 
 if __name__ == "__main__":
-    main()
+    coords_pointer()
