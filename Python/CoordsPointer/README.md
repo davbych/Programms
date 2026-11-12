@@ -1,5 +1,5 @@
 ### EN
-<h4> Libraries "TKinter" and "Datetime" already available in Python "out of the box" =) </h4>
+<h4> Libraries "tkinter" and "datetime" already available in Python "out of the box" =) </h4>
 
 - Launch file:
   - in programm PyCharm
@@ -8,7 +8,7 @@
 
 
 ### RU
-<h4> Библиотеки "TKinter" и "Datetime" уже работают в Python "из коробки" =) </h4>
+<h4> Библиотеки "tkinter" и "datetime" уже работают в Python "из коробки" =) </h4>
 
 - Запустите файл:
   - в программе PyCharm
