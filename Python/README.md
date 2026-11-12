@@ -9,6 +9,7 @@
 - Open settings and select `Project: [file name]`
 - Then select `Python interpreter`
 - Choose directory with `python.exe`
+- Launch file using green arrow at the top
 
 <h4> Launch .py file in Visual Studio Code: </h4>
 
@@ -29,6 +30,7 @@
 - Откройте настройки и выберите `Project: [название файла]`
 - Затем выберите `Python interpreter`
 - Выберите директорию с `python.exe`
+- Запустите файл с помощью зелёной стрелки сверху
 
 <h4> Запуск .py файла в Visual Studio Code: </h4>
 
