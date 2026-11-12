@@ -1,3 +1,5 @@
+# CoordsPointer
+
 ### EN
 CoordPointer is a small utility that opens a window displaying the exact cursor coordinates at the top (The coordinates are updated 16 times per second). You can pause the updates by pressing "Space". To copy coordinates in different formats, LMB and RMB inside the window. The middle section shows the current event (copying, paused, updating), while the bottom section shows the last copied coordinates, the copy timestamp, and the format used. You can close the window with the standard Windows X button or by pressing "Escape" when the window is focused.
 
