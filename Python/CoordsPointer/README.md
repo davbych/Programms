@@ -9,7 +9,7 @@ Libraries "TKinter" and "Datetime" already available in Python "out of the box" 
 
 
 #### RU
-Библиотеки "`TKinter`" и "`Datetime`" уже работают в Python "из коробки" =)
+Библиотеки "TKinter" и "Datetime" уже работают в Python "из коробки" =)
 
 0\) Запустите файл:
 
