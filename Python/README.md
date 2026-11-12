@@ -1,4 +1,4 @@
-#### EN
+### EN
  Launch `.py` file in **PyCharm**. Set up a virtual environment
 
 - Download python ( > 3.10 )
