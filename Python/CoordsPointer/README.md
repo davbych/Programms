@@ -1,12 +1,12 @@
 #### EN
 Libraries "TKinter" and "Datetime" already available in Python "out of the box" =)
-
-0\) Launch file:
-
-  0.1\) From console: `cd /d [disk]:/[path]/CoordsPointer.py`
-
-  0.2\) From terminal PyCharm: `python CoordsPointer.py`
-
+<ol>
+  <li> Launch file: </li>
+  <ol>
+    <li> From console: `cd /d [disk]:/[path]/CoordsPointer.py` </li>
+    <li> From terminal PyCharm: `python CoordsPointer.py` </li>
+  </ol>
+</ol>
 
 #### RU
 Библиотеки "TKinter" и "Datetime" уже работают в Python "из коробки" =)
