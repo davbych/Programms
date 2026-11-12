@@ -1,6 +1,11 @@
 # DavBot
 
 ### EN
+This program is built on JavaScript and the Mineflayer API. Mineflayer is a large library that lets you create and program bots for Minecraft: you can make them respond to your messages, move along chosen or free paths, do tasks for you, protect you, and much more. The capabilities of this library are limited only by your imagination and programming skills.
+
+Be dure to take a look doucmentation on mineflayer: https://github.com/PrismarineJS/mineflayer <br/>
+Also check out the JavaScript programming language guide to understand the syntax: https://github.com/Only-tutorials/javascript-tutorial?ysclid=mwd4izywu698175420
+
 <h4> Download library "javascript": </h4>
 
 - Open folder with file:
