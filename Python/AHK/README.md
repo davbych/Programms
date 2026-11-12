@@ -1,4 +1,8 @@
 ### EN
+This modifiable code can be useful in cases where you want to automate mouse or keyboard actions, no matter where: at work or in a game!
+
+Also look at the documentation to edit the code yourself, however you like! https://github.com/learncodebygaming/pydirectinput
+
 <h4> Download libraries "pyautogui" and "pydirectinput": </h4>
 
 - Open folder:
