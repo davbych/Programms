@@ -6,7 +6,9 @@
 - Select `File`
 - Then select `Open...` and open your work folder, with `.py` file
 - In the left panel, open `.py` file
-- Open settings and select `Project: [file name]`, then select `Python interpreter`
+- Open settings and select `Project: [file name]`
+- Then select `Python interpreter`
+- Choose directory with `python.exe`
 
 Launch `.py` file in **Visual Studio Code**:
 
@@ -24,6 +26,9 @@ Launch `.py` file in **Visual Studio Code**:
 - Выберите `File`
 - Затем выберите `Open...` и откройте рабочую папку, с `.py` файлом
 - В левой панели откройте `.py` файл
+- Откройте настройки и выберите `Project: [название файла]`
+- Затем выберите `Python interpreter`
+- Выберите директорию с `python.exe`
 
 Запуск `.py` файла в **Visual Studio Code**:
 
