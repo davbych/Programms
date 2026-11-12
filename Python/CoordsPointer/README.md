@@ -1,5 +1,5 @@
-#### EN
-Libraries "TKinter" and "Datetime" already available in Python "out of the box" =)
+### EN
+<h4> Libraries "TKinter" and "Datetime" already available in Python "out of the box" =) </h4>
 
 - Launch file:
   - in programm PyCharm
@@ -7,8 +7,8 @@ Libraries "TKinter" and "Datetime" already available in Python "out of the box" 
   - or from Windows console: `cd /d [disk]:/[path]/CoordsPointer.py`
 
 
-#### RU
-Библиотеки "TKinter" и "Datetime" уже работают в Python "из коробки" =)
+### RU
+<h4> Библиотеки "TKinter" и "Datetime" уже работают в Python "из коробки" =) </h4>
 
 - Запустите файл:
   - в программе PyCharm
