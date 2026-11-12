@@ -1,5 +1,5 @@
-#### EN
-Download library "javascript"
+### EN
+<h4> Download library "javascript" </h4>
 
 - Open folder with file:
   - in PyCharm: `File -> Open... -> [folder]`
@@ -8,8 +8,8 @@ Download library "javascript"
 - Download library: `pip install javascript`
 
 
-#### RU
-Скачайте библиотеку "javascript":
+### RU
+<h4> Скачайте библиотеку "javascript": </h4>
 
 - Откройте папку с файлом:
   - в PyCharm: `File -> Open... -> [folder]`
