@@ -8,7 +8,7 @@ Set up a virtual environment for **PyCharm**, in working folder:
 
 Launch `.py` file from Visual Studio Code:
 
-- Download and launch Visual Studio Code
+- Download and launch **Visual Studio Code**:
 - Select `File`
 - Then select `Open file` and open your work folder, with `.py` file
 - In the left panel, open `.py` file
@@ -22,7 +22,7 @@ Launch `.py` file from Visual Studio Code:
 - Затем выберите `Open...` и откройте рабочую папку, с `.py` файлом
 - В левой панели откройте `.py` файл
 
-Запуск `.py` файла из Visual Studio Code:
+Запуск `.py` файла из **Visual Studio Code**:
 
 - Скачайте и запустите Visual Studio Code
 - Выберите `File`
