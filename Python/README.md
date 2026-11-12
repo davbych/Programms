@@ -1,5 +1,8 @@
 ### EN
 This modifiable code can be useful in cases where you want to automate mouse or keyboard actions, no matter where: at work or in a game!
+Also look at the documentation to edit the code yourself, however you like!
+
+  https://github.com/learncodebygaming/pydirectinput
 
 <h4> Launch .py file in PyCharm. Set up a virtual environment </h4>
 
@@ -23,6 +26,9 @@ This modifiable code can be useful in cases where you want to automate mouse or 
 
 ### RU
 Этот, изменяемый, код может быть полезен в тех случаях, когда вы хотите автоматизировать действия мыши или клавиатуры, не важно где: в работе или в игре!
+Также посмотрите документацию, чтобы редактировать код самостоятельно, как вам угодно!
+
+  https://github.com/learncodebygaming/pydirectinput
 
 <h4> Запуск .py файла в PyCharm. Настройка виртуального окружения: </h4>
 
