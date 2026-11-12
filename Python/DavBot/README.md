@@ -1,5 +1,5 @@
 ### EN
-<h4> Download library "javascript" </h4>
+<h4> Download library "javascript": </h4>
 
 - Open folder with file:
   - in PyCharm: `File -> Open... -> [folder]`
