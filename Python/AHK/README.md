@@ -2,8 +2,8 @@
 Download libraries "pyautogui" and "pydirectinput":
 
 - Open folder:
-  - in console: `cd /d [disk]:/[path]/AHK`
-  - in terminal for file in PyCharm
+  - in Windows console: `cd /d [disk]:/[path]/AHK`
+  - in terminal PyCharm
 
 - Download first library: `pip install pyautogui`
 - Download second library: `pip install pydirectinput`
@@ -13,8 +13,8 @@ Download libraries "pyautogui" and "pydirectinput":
 Скачайте библиотеки "pyautogui" и "pydirectinput":
 
 - Откройте папку:
-  - в консоли: `cd /d [disk]:/[path]/AHK`
-  - в терминале для файла в PyCharm
+  - в консоли Windows: `cd /d [disk]:/[path]/AHK`
+  - в терминале PyCharm
 
 - Установите первую библиотеку: `pip install pyautogui`
 - Установите вторую библиотеку: `pip install pydirectinput`
