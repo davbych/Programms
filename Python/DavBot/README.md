@@ -2,8 +2,8 @@
 Download library "javascript"
 
 - Open folder with file:
-  - in Windows console: `cd /d [disk]:/[path]/DavBot`
-  - in terminal PyCharm
+  - in PyCharm: `File -> Open... -> [folder]`
+  - or in Windows console: `cd /d [disk]:/[path]/DavBot`
 
 - Download library: `pip install javascript`
 
@@ -12,7 +12,7 @@ Download library "javascript"
 Скачайте библиотеку "javascript":
 
 - Откройте папку с файлом:
-  - в консоли Windows: `cd /d [disk]:/[path]/DavBot`
-  - в терминале PyCharm
+  - в PyCharm: `File -> Open... -> [folder]`
+  - или в консоли Windows: `cd /d [disk]:/[path]/DavBot`
 
 - Установите библиотеку: `pip install javascript`
