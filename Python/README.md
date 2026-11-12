@@ -18,7 +18,7 @@ Launch `.py` file in **Visual Studio Code**:
 - In the left panel, open `.py` file
 - Launch file in terminal Visual Studio Code: `python [file name].py`
 
-#### RU
+### RU
 Запуск `.py` файла в **PyCharm**. Настройка виртуального окружения:
 
 - Скачайте python ( > 3.10 )
