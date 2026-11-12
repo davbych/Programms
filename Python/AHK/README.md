@@ -1,5 +1,5 @@
-#### EN
-Download libraries "pyautogui" and "pydirectinput":
+### EN
+<h4> Download libraries "pyautogui" and "pydirectinput": </h4>
 
 - Open folder:
   - in PyCharm: `File -> Open... -> [folder]`
@@ -9,8 +9,8 @@ Download libraries "pyautogui" and "pydirectinput":
 - Download second library: `pip install pydirectinput`
 
 
-#### RU
-Скачайте библиотеки "pyautogui" и "pydirectinput":
+### RU
+<h4> Скачайте библиотеки "pyautogui" и "pydirectinput": </h4>
 
 - Откройте папку:
   - в PyCharm: `File -> Open... -> [folder]`
