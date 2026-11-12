@@ -10,6 +10,7 @@ Set up a virtual environment for **PyCharm**, in working folder:
 3\) In the left panel, open any `.py` file
 
 
+
 #### RU
 Настройка виртуального окружения для **PyCharm** в рабочей папке:
 
