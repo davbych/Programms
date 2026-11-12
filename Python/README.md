@@ -1,5 +1,5 @@
 ### EN
- Launch `.py` file in **PyCharm**. Set up a virtual environment
+<h3> Launch `.py` file in **PyCharm**. Set up a virtual environment </h3>
 
 - Download python ( > 3.10 )
 - Download and launch PyCharm
