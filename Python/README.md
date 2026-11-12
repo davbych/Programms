@@ -6,9 +6,9 @@
 - Then select `Open...` and open your work folder, with `.py` file
 - In the left panel, open `.py` file
 
-Launch `.py` file in Visual Studio Code:
+Launch `.py` file in **Visual Studio Code**:
 
-- Download and launch **Visual Studio Code**:
+- Download and launch Visual Studio Code
 - Select `File`
 - Then select `Open file` and open your work folder, with `.py` file
 - In the left panel, open `.py` file
