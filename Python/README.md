@@ -1,4 +1,6 @@
 ### EN
+This modifiable code can be useful in cases where you want to automate mouse or keyboard actions, no matter where: at work or in a game!
+
 <h4> Launch .py file in PyCharm. Set up a virtual environment </h4>
 
 - Download python ( > 3.10 )
@@ -20,6 +22,8 @@
 - Launch file in terminal Visual Studio Code: `python [file name].py`
 
 ### RU
+Этот, изменяемый, код может быть полезен в тех случаях, когда вы хотите автоматизировать действия мыши или клавиатуры, не важно где: в работе или в игре!
+
 <h4> Запуск .py файла в PyCharm. Настройка виртуального окружения: </h4>
 
 - Скачайте python ( > 3.10 )
