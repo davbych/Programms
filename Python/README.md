@@ -1,12 +1,12 @@
 #### EN
-Set up a virtual environment for **PyCharm**, in working folder: 
+ Launch `.py` file in **PyCharm**. Set up a virtual environment
 
 - Download and launch PyCharm
 - Select `File`
 - Then select `Open...` and open your work folder, with `.py` file
 - In the left panel, open `.py` file
 
-Launch `.py` file from Visual Studio Code:
+Launch `.py` file in Visual Studio Code:
 
 - Download and launch **Visual Studio Code**:
 - Select `File`
@@ -15,14 +15,14 @@ Launch `.py` file from Visual Studio Code:
 - Launch file in terminal Visual Studio Code: `python [file name].py`
 
 #### RU
-Настройка виртуального окружения для **PyCharm** в рабочей папке:
+Запуск `.py` файла в **PyCharm**. Настройка виртуального окружения:
 
 - Скачайте и запустите PyCharm
 - Выберите `File`
 - Затем выберите `Open...` и откройте рабочую папку, с `.py` файлом
 - В левой панели откройте `.py` файл
 
-Запуск `.py` файла из **Visual Studio Code**:
+Запуск `.py` файла в **Visual Studio Code**:
 
 - Скачайте и запустите Visual Studio Code
 - Выберите `File`
