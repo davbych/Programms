@@ -6,6 +6,10 @@
   - or in Windows console: `cd /d [disk]:/[path]/DavBot`
 
 - Download library: `pip install javascript`
+- Launch file:
+  - in programm PyCharm
+  - or from terminal Visual Studio Code: python CoordsPointer.py
+  - or from Windows console: cd /d [disk]:/[path]/CoordsPointer.py
 
 
 ### RU
