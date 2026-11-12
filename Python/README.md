@@ -1,5 +1,5 @@
 ### EN
-<h3> Launch `.py` file in **PyCharm**. Set up a virtual environment </h3>
+<h5> Launch `.py` file in **PyCharm**. Set up a virtual environment </h5>
 
 - Download python ( > 3.10 )
 - Download and launch PyCharm
@@ -10,7 +10,7 @@
 - Then select `Python interpreter`
 - Choose directory with `python.exe`
 
-Launch `.py` file in **Visual Studio Code**:
+<h5> Launch `.py` file in **Visual Studio Code**: </h5>
 
 - Download and launch Visual Studio Code
 - Select `File`
