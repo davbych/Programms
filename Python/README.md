@@ -1,10 +1,12 @@
 #### EN
  Launch `.py` file in **PyCharm**. Set up a virtual environment
 
+- Download python ( > 3.10 )
 - Download and launch PyCharm
 - Select `File`
 - Then select `Open...` and open your work folder, with `.py` file
 - In the left panel, open `.py` file
+- Open settings and select `Project: [file name]`, then select `Python interpreter`
 
 Launch `.py` file in **Visual Studio Code**:
 
@@ -17,6 +19,7 @@ Launch `.py` file in **Visual Studio Code**:
 #### RU
 Запуск `.py` файла в **PyCharm**. Настройка виртуального окружения:
 
+- Скачайте ptyhon ( > 3.10 )
 - Скачайте и запустите PyCharm
 - Выберите `File`
 - Затем выберите `Open...` и откройте рабочую папку, с `.py` файлом
