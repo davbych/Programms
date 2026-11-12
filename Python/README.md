@@ -1,5 +1,5 @@
 ### EN
-This folder will contain the final versions of my small programs, utilities, and all that fun stuff.
+This folder will contain the final versions of my small programs, utilities, and all that fun stuff written in python =D
 
 <h4> Launch .py file in PyCharm. Set up a virtual environment </h4>
 
@@ -22,7 +22,7 @@ This folder will contain the final versions of my small programs, utilities, and
 - Launch file in terminal Visual Studio Code: `python [file name].py`
 
 ### RU
-В этой папке будут собраны конечные версии моих небольших программок, утилит и всего такого забавного
+В этой папке будут собраны конечные версии моих небольших программок, утилит и всего такого забавного написанного на python =D
 
 <h4> Запуск .py файла в PyCharm. Настройка виртуального окружения: </h4>
 
