@@ -17,7 +17,7 @@ Also check out the JavaScript programming language guide to understand the synta
 - Launch file:
   - in programm PyCharm
   - or from terminal Visual Studio Code: python CoordsPointer.py
-  - or from Windows console: cd /d [disk]:/[path]/CoordsPointer.py
+  - or from Windows console: `cd /d [disk]:/[path]/CoordsPointer.py`
 
 
 ### RU
