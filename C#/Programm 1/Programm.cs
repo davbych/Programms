@@ -1,1 +1,1 @@
-//A progreamm written in C#
+//A programm written in C#
