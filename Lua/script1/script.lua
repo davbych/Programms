@@ -1,1 +1,1 @@
-Script on programming language lua, for minecraft mod "Figura" 
+Script written in Lua, for minecraft mod "Figura" 
