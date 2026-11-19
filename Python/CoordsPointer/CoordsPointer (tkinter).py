@@ -22,7 +22,7 @@ def main():
         "binds_text":(
             "1. ЛКМ (в окне) - Скопировать в формате 'X, Y'\n"
             "2. ПКМ (в окне) - Скопировать в формате 'pydirectinput.moveTo(X, Y)'\n"
-            "3. Пробел - Остановить/восстановить обновление координат\n"
+            "3. Пробел - Остановить / Запустить обновление координат\n"
             "4. Escape - Закрыть программу"
         )
     }, "en":{
@@ -44,7 +44,7 @@ def main():
         "binds_text": (
             "1. LMB (in window) — Copy in format 'X, Y'\n"
             "2. RMB (in window) — Copy in format 'pydirectinput.moveTo(X, Y)'\n"
-            "3. Space — Pause/resume coordinate updates\n"
+            "3. Space — Pause / Play coordinate updates\n"
             "4. Escape — Close the program"
         ),
     }}
