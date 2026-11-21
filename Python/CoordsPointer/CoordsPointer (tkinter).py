@@ -1,7 +1,7 @@
 import tkinter as tk
 from datetime import datetime
 
-def main():
+def coords_pointer():
     STRINGS = {
         "ru":{
         "title":"Курсор (X, Y)",
@@ -223,4 +223,4 @@ def main():
     root.mainloop()
 
 if __name__ == "__main__":
-    main()
+    coords_pointer()
