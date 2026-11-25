@@ -11,7 +11,7 @@ Be sure to read the HTML, CSS, JavaScript documentation:  https://mixelte.github
 
 ### RU
 
-Здесь я буду оставлять некоторые интересные .html-страницы локальных веб-сайтов и отдельные .js-файлики. Код можно редактирлвать в Visual Studio Code, но есть отдельная IDE, для веб-программирования - WebStorm.
+Здесь я буду оставлять некоторые интересные .html-страницы локальных веб-сайтов и отдельные .js-файлики. Код можно редактировать в Visual Studio Code, но есть отдельная IDE, для веб-программирования - WebStorm.
 
 Обязательно прочтите документацию по HTML, CSS, JavaScript: https://mixelte.github.io/pages/html-css-js/?ysclid=mwvsv8vk6i699286942
 
