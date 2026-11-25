@@ -4,7 +4,7 @@
 
 ...
 
-Be sure to read Lua documentation: https://www.lua.org/docs.html
+Be sure to read Lua language documentation: https://www.lua.org/docs.html
 
 ...
 
@@ -12,6 +12,6 @@ Be sure to read Lua documentation: https://www.lua.org/docs.html
 
 ...
 
-Обязательно прочтите документацию по Lua: https://www.lua.org/docs.html
+Обязательно прочтите документацию по языку Lua: https://www.lua.org/docs.html
 
 ...
