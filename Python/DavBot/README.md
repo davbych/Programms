@@ -29,12 +29,12 @@ Also check out the JavaScript programming language guide to understand the synta
 <h4> Скачайте библиотеку "javascript" и "mineflayer": </h4>
 
 - Откройте папку с файлом:
-  - в PyCharm: `File -> Open... -> [folder]`
-  - или в консоли Windows: `cd /d [disk]:/[path]/DavBot`
+  - в PyCharm: `Файл -> Открыть... -> [папка]`
+  - или в консоли Windows: `cd /d [дис4]:/[путь]/DavBot`
 
 - Установите библиотеку: `pip install javascript`
 - Установите библиотеку: `pip install mineflayer`
 - Запустите файл:
   - в программе PyCharm
   - или из терминала Visual Studio Code: python CoordsPointer.py
-  - или из консоли Windows: `сd /d [disk]:/[path]/CoordsPointer.py`
+  - или из консоли Windows: `сd /d [диск]:/[путь]/CoordsPointer.py`
