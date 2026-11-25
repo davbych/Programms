@@ -4,7 +4,7 @@
 
 ...
 
-Be sure to read C# documentation: https://learn.microsoft.com/en-us/dotnet/csharp/
+Be sure to read C# language documentation: https://learn.microsoft.com/en-us/dotnet/csharp/
 
 ...
 
@@ -12,6 +12,6 @@ Be sure to read C# documentation: https://learn.microsoft.com/en-us/dotnet/cshar
 
 ...
 
-Обязательно прочтите документацию по C#: https://learn.microsoft.com/ru-ru/dotnet/csharp/
+Обязательно прочтите документацию по языку C#: https://learn.microsoft.com/ru-ru/dotnet/csharp/
 
 ...
