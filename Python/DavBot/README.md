@@ -17,7 +17,7 @@ Also check out the JavaScript programming language guide to understand the synta
 - Launch file:
   - in programm PyCharm
   - or from terminal Visual Studio Code: python CoordsPointer.py
-  - or from Windows console: `cd /d [disk]:/[path]/CoordsPointer.py`
+  - or from Windows console: `cd /d [disk]:/[path]/DavBot.py`
 
 
 ### RU
@@ -37,4 +37,4 @@ Also check out the JavaScript programming language guide to understand the synta
 - Запустите файл:
   - в программе PyCharm
   - или из терминала Visual Studio Code: python CoordsPointer.py
-  - или из консоли Windows: `сd /d [диск]:/[путь]/CoordsPointer.py`
+  - или из консоли Windows: `сd /d [диск]:/[путь]/DavBot.py`
