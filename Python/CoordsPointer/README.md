@@ -25,4 +25,4 @@ Documentation on Datetime: https://realpython.com/python-datetime/
 - Запустите файл:
   - в программе PyCharm
   - или из терминала Visual Studio Code: `python CoordsPointer.py`
-  - или из консоли Windows: `сd /d [disk]:/[path]/CoordsPointer.py`
+  - или из консоли Windows: `сd /d [диск]:/[путь]/CoordsPointer.py`
