@@ -4,7 +4,7 @@
 
 ...
 
-Be sure to read C# documentation: https://learn.microsoft.com/ru-ru/dotnet/csharp/
+Be sure to read C# documentation: https://learn.microsoft.com/en-us/dotnet/csharp/
 
 ...
 
