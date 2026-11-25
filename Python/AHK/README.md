@@ -23,8 +23,8 @@ Also look at the documentation on PDI to edit the code yourself, however you lik
 <h4> Скачайте библиотеки "pyautogui" и "pydirectinput": </h4>
 
 - Откройте папку:
-  - в PyCharm: `File -> Open... -> [folder]`
-  - или в консоли Windows: `cd /d [disk]:/[path]/AHK`
+  - в PyCharm: `Файл -> Открыть... -> [папка]`
+  - или в консоли Windows: `cd /d [диск]:/[путь]/AHK`
 
 - Установите первую библиотеку: `pip install pyautogui`
 - Установите вторую библиотеку: `pip install pydirectinput`
