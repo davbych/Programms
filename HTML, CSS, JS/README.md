@@ -16,4 +16,4 @@ Be sure to read the HTML, CSS, JavaScript documentation:  https://mixelte.github
 Обязательно прочтите документацию по HTML, CSS, JavaScript: https://mixelte.github.io/pages/html-css-js/?ysclid=mwvsv8vk6i699286942
 
 - Файлы .html можно запускать двойным нажатием на сам файл.
-- Файлы.js можно запускать через консоль или через IDE.
+- Файлы .js можно запускать через консоль или через IDE.
