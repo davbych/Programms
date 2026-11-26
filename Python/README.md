@@ -34,8 +34,8 @@ Be sure to read the Python  language documentation: https://docs.python.org/3/
 
 - Скачайте python ( > 3.10 )
 - Скачайте и запустите PyCharm
-- Выберите `File`
-- Затем выберите `Open...` и откройте рабочую папку, с `.py` файлом
+- Выберите `Файл`
+- Затем выберите `Открыть...` и откройте рабочую папку, с `.py` файлом
 - В левой панели откройте `.py` файл
 - Откройте настройки и выберите `Project: [название файла]`
 - Затем выберите `Python interpreter`
@@ -45,7 +45,7 @@ Be sure to read the Python  language documentation: https://docs.python.org/3/
 <h4> Запуск .py файла в Visual Studio Code: </h4>
 
 - Скачайте и запустите Visual Studio Code
-- Выберите `File`
-- Затем выберите `Open file` и откройте рабочую папку, с `.py` файлом
+- Выберите `Файл`
+- Затем выберите `Открыть файл` и откройте рабочую папку, с `.py` файлом
 - В левой панели откройте `.py` файл
 - Запустите файл в терминале Visual Studio Code: `python [название файла].py`
