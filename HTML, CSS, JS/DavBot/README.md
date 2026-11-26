@@ -10,16 +10,16 @@ Also check out the JavaScript programming language guide to understand the synta
 
 - Open folder with file `.js`:
   - from Windows console: `cd /d [диск]:/[путь]/DavBot`
-  - or from terminal Visual Studio Code:
-    - select `File`
-    - then select `Open file` and open your work folder, with `.js` file
+  - or from terminal Visual Studio Code
    
 - Введите в консоль или терминал:
   - `npm install`
   - `npm init -y`
   
-- Чтобы запустить бота:
-  - введите в консоль или терминал: `node DavBot.js`
+<h4> Launch bot: </h4>
+
+- Write in Windows console or in terminal Visual Studio Code:
+  - `node DavBot.js`
 
 
 ### RU
@@ -32,9 +32,7 @@ Also check out the JavaScript programming language guide to understand the synta
 
 - Откройте папку с файлом `.js`:
   - через Windows консоль: `cd /d [диск]:/[путь]/DavBot`
-  - или через терминал Visual Studio Code:
-    - вверху нажмите кнопку: `Файл`
-    - затем выберите `Открыть файл` и откройте рабочую папку, с `.js` файлом
+  - или через терминал Visual Studio Code
    
 - Введите в консоль или терминал:
   - `npm install`
@@ -42,5 +40,5 @@ Also check out the JavaScript programming language guide to understand the synta
 
 <h4> Запустите бота: </h4>
 
-- Введите в консоль или терминал:
+- Введите в консоль или в терминал Visual Studio Code:
   - `node DavBot.js`
