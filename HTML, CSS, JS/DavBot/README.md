@@ -9,8 +9,8 @@ Also check out the JavaScript programming language guide to understand the synta
 <h4> Download library "mineflayer" in the folder with file .js: </h4>
 
 - Open folder with file .js:
-  - через Windows консоль: `cd /d [диск]:/[путь]/DavBot`
-  - или через терминал Visual Studio Code:
+  - from Windows console: `cd /d [диск]:/[путь]/DavBot`
+  - or from terminal Visual Studio Code:
     - вверху нажмите кнопку: `Файл`
     - затем выберите Открыть файл и откройте рабочую папку, с .js файлом
    
