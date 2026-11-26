@@ -6,7 +6,7 @@ Probably, there will be console programs written in the batch programming langua
 
 Be sure to read Batch language tutorial: https://www.wikihow.com/Write-a-Batch-File
 
-... 
+- .html files can be run by double‑clicking the file itself.
 
 ### RU
 
@@ -14,4 +14,4 @@ Be sure to read Batch language tutorial: https://www.wikihow.com/Write-a-Batch-F
 
 Обязательно прочтите туториал по языку Batch: https://www.wikihow.com/Write-a-Batch-File
 
-- Файлы .bat можно запускать двойным нажатием на сам файл
+- Файлы .bat можно запускать двойным нажатием на сам файл.
