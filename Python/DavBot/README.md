@@ -16,7 +16,7 @@ Also check out the JavaScript programming language guide to understand the synta
 - Download library: `pip install mineflayer`
 - Launch file:
   - in programm PyCharm
-  - or from terminal Visual Studio Code: python CoordsPointer.py
+  - or from terminal Visual Studio Code: `python CoordsPointer.py`
   - or from Windows console: `cd /d [disk]:/[path]/DavBot.py`
 
 
@@ -36,5 +36,5 @@ Also check out the JavaScript programming language guide to understand the synta
 - Установите библиотеку: `pip install mineflayer`
 - Запустите файл:
   - в программе PyCharm
-  - или из терминала Visual Studio Code: python CoordsPointer.py
+  - или из терминала Visual Studio Code: `python CoordsPointer.py`
   - или из консоли Windows: `сd /d [диск]:/[путь]/DavBot.py`
