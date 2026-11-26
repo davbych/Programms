@@ -7,7 +7,7 @@ Here, I will be leaving some interesting .html pages of local websites and indiv
 Be sure to read the HTML, CSS, JavaScript tutorial:  https://mixelte.github.io/pages/html-css-js/?ysclid=mwvsv8vk6i699286942
 
 - .html files can be run by double‑clicking the file itself.
-- .js files can be run via the console or through an IDE.
+- .js files can be run via the Windows console or through an Visual Studio Code.
 
 ### RU
 
@@ -16,4 +16,4 @@ Be sure to read the HTML, CSS, JavaScript tutorial:  https://mixelte.github.io/p
 Обязательно прочтите туториал по HTML, CSS, JavaScript: https://mixelte.github.io/pages/html-css-js/?ysclid=mwvsv8vk6i699286942
 
 - Файлы .html можно запускать двойным нажатием на сам файл.
-- Файлы .js можно запускать через консоль или через IDE.
+- Файлы .js можно запускать через консоль Windows или через Visual Studio Code.
