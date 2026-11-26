@@ -39,6 +39,8 @@ Also check out the JavaScript programming language guide to understand the synta
 - Введите в консоль или терминал:
   - `npm install`
   - `npm init -y`
-  
-- Чтобы запустить бота:
-  - введите в консоль или терминал: `node DavBot.js`
+
+<h4> Запустите бота: </h4>
+
+- Введите в консоль или терминал:
+  - `node DavBot.js`
