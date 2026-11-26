@@ -6,13 +6,13 @@ This program is built on JavaScript and the Mineflayer API. Mineflayer is a larg
 Be sure to take a look doucmentation on mineflayer: https://github.com/PrismarineJS/mineflayer <br/>
 Also check out the JavaScript programming language guide to understand the syntax: https://github.com/Only-tutorials/javascript-tutorial?ysclid=mwd4izywu698175420
 
-<h4> Download library "mineflayer" in the folder with file .js: </h4>
+<h4> Download library "mineflayer" in the folder with file `.js`: </h4>
 
-- Open folder with file .js:
+- Open folder with file `.js`:
   - from Windows console: `cd /d [диск]:/[путь]/DavBot`
   - or from terminal Visual Studio Code:
-    - вверху нажмите кнопку: `Файл`
-    - затем выберите Открыть файл и откройте рабочую папку, с .js файлом
+    - select `File`
+    - then select `Open file` and open your work folder, with `.js` file
    
 - Введите в консоль или терминал:
   - `npm install`
@@ -28,13 +28,13 @@ Also check out the JavaScript programming language guide to understand the synta
 Обязательно посмотрите документацию по mineflayer: https://github.com/PrismarineJS/mineflayer <br/>
 Также посмотрите гайд по языку программирования JavaScript, чтобы понимать синтаксис: https://github.com/Only-tutorials/javascript-tutorial?ysclid=mwd4izywu698175420
 
-<h4> Установите библиотеку "mineflayer" в папку с файлом .js: </h4>
+<h4> Установите библиотеку "mineflayer" в папку с файлом `.js`: </h4>
 
-- Откройте папку с файлом .js:
+- Откройте папку с файлом `.js`:
   - через Windows консоль: `cd /d [диск]:/[путь]/DavBot`
   - или через терминал Visual Studio Code:
     - вверху нажмите кнопку: `Файл`
-    - затем выберите Открыть файл и откройте рабочую папку, с .js файлом
+    - затем выберите `Открыть файл` и откройте рабочую папку, с `.js` файлом
    
 - Введите в консоль или терминал:
   - `npm install`
