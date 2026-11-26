@@ -6,7 +6,7 @@ Probably, there will be console programs written in the batch programming langua
 
 Be sure to read Batch language tutorial: https://www.wikihow.com/Write-a-Batch-File
 
-- .html files can be run by double‑clicking the file itself.
+- .bat files can be run by double‑clicking the file itself.
 
 ### RU
 
