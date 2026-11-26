@@ -9,7 +9,7 @@ Also check out the JavaScript programming language guide to understand the synta
 <h4> Download library "mineflayer" in the folder with file `.js`: </h4>
 
 - Open folder with file `.js`:
-  - from Windows console: `cd /d [диск]:/[путь]/DavBot`
+  - from Windows console: `cd /d [disk]:/[path]/DavBot`
   - or from terminal Visual Studio Code
    
 - Введите в консоль или терминал:
