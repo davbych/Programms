@@ -3,7 +3,7 @@
 ### EN
 This program is built on JavaScript and the Mineflayer API. Mineflayer is a large library that lets you create and program bots for Minecraft: you can make them respond to your messages, move along chosen or free paths, do tasks for you, protect you, and much more. The capabilities of this library are limited only by your imagination and programming skills.
 
-In order for the bot code to work, you need to download the Minecraft version, which is supported by the minelfayer library. Then create any type of world. Enter this world and open the game online. You've made the Minecraft world your local server! Remember the port that was sent to the chat, you will need to enter it in the line: `port:` in the bot file so that it connects to your world. In the line: `ip:` enter `localhost' (your local server) so that the bot joins your local server.
+In order for the bot code to work, you need to download the Minecraft version, which is supported by the minelfayer library. Then create any type of world. Enter this world and open the game online. You've made the Minecraft world your local server! Remember the port that was sent to the chat, you will need to enter it in the line: `port:` in the bot file so that it connects to your world. In the line: `ip:` enter `localhost` (your local server) so that the bot joins your local server.
 
 Be sure to take a look doucmentation on mineflayer: https://github.com/PrismarineJS/mineflayer <br/>
 Also check out the JavaScript programming language guide to understand the syntax: https://github.com/Only-tutorials/javascript-tutorial?ysclid=mwd4izywu698175420
