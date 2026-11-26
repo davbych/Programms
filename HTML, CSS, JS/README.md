@@ -9,8 +9,8 @@ Be sure to read the HTML, CSS, JavaScript tutorial:  https://mixelte.github.io/p
 - .html files can be run by double‑clicking the file itself.
 - .js files can be run via the Windows console or through an Visual Studio Code:
   - download and launch Visual Studio Code
-  - select File
-  - then select Open file and open your work folder, with .js file
+  - select `File`
+  - then select `Open file` and open your work folder, with .js file
   - in the left panel, open `.js` file
   - launch file in terminal Visual Studio Code: `node [file name].js`
 
@@ -22,8 +22,8 @@ Be sure to read the HTML, CSS, JavaScript tutorial:  https://mixelte.github.io/p
 
 - Файлы .html можно запускать двойным нажатием на сам файл.
 - Файлы .js можно запускать через консоль Windows или через Visual Studio Code:
-  - Скачайте и запустите Visual Studio Code
-  - Выберите `Файл`
-  - Затем выберите `Открыть файл` и откройте рабочую папку, с `.js` файлом
-  - В левой панели откройте `.js` файл
-  - Запустите файл в терминале Visual Studio Code: `node [название файла].js`
+  - скачайте и запустите Visual Studio Code
+  - выберите `Файл`
+  - затем выберите `Открыть файл` и откройте рабочую папку, с `.js` файлом
+  - в левой панели откройте `.js` файл
+  - запустите файл в терминале Visual Studio Code: `node [название файла].js`
